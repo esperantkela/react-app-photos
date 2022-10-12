@@ -19,11 +19,15 @@ function App() {
             <li>
               <Link to="/login">Login</Link>
             </li>
+            <li>
+              <Link to="/car">Car</Link>
+            </li>
           </ul>
         </nav>
           <Routes>
-            <Route path='home' index element={<Welcome />} />
-            <Route path="/login" index element={<Login />} />
+            <Route path='/home' index element={<Welcome />} />
+            <Route path="/login"  element={<Login />} />
+            <Route path="/car"  element={<Car />} />
           </Routes>
           
       </div>
