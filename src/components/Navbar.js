@@ -25,7 +25,7 @@ class Navbar extends React.Component{
                             <Link class="nav-link active" aria-current="page" to="/login">Connexion</Link>
                             </li>
                             <li class="nav-item">
-                            <Link class="nav-link" to="/register">Inscription</Link>
+                            <Link class="nav-link active" to="/register">Inscription</Link>
                             </li> 
                         </ul>
                         </div>
