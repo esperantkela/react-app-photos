@@ -43,12 +43,17 @@ class Register extends React.Component{
         })
     }
 
+    handleRegister = (e) =>{
+        e.preventDefault()
+        console.log('Inscription')
+    }
+
     render(){
         return(
             <React.Fragment>
                 <div className="container w-50">
                     <h1 className="text-center my-5">S'inscrire</h1>
-                <form>
+                <form method="post" onSubmit={this.handleRegister}>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Nom</label>
                         <input type="text"  onChange={this.handleNameChange} className="form-control" aria-describedby="emailHelp"/>
@@ -65,7 +70,7 @@ class Register extends React.Component{
                         <label for="exampleInputPassword1" className="form-label">Confirmation mot de passe</label>
                         <input type="password" onChange={this.handleConfirmPasswordChange} className="form-control"/>
                     </div>
-                    <button type="submit" className="btn btn-primary">S'inscrire</button>
+                    <button type="submit"  className="btn btn-primary">S'inscrire</button>
                 </form>
                 </div>
             </React.Fragment>

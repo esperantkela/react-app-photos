@@ -3,24 +3,48 @@ import React from "react";
 class Login extends React.Component{
     constructor(){
         super()
-        this.state= {}
+        this.state= {
+            email : '',
+            password : ''
+        }
+    }
+
+    handleEmailChange = (e) =>{
+        this.setState({
+            email: e.target.value
+        }, ()=>{
+            console.log(this.state)
+        })
+    }
+
+    handlePasswordChange = (e) =>{
+        this.setState({
+            password: e.target.value
+        }, ()=>{
+            console.log(this.state)
+        })
+    }
+
+    handleLogin = (e) =>{
+        e.preventDefault()
+        console.log('connexion')
     }
 
     render(){
         return(
             <React.Fragment>
-                <div class="container w-50 my-5">
-                    <h1 class="text-center">Connexion</h1>
-                <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                <div className="container w-50">
+                    <h1 className="text-center my-5">Connexion</h1>
+                <form method="post" onSubmit={this.handleLogin}>
+                    <div className="mb-3">
+                        <label for="exampleInputEmail1" className="form-label">Adresse email</label>
+                        <input type="email" onChange={this.handleEmailChange} className="form-control" aria-describedby="emailHelp"/>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"/>
+                    <div className="mb-3">
+                        <label for="exampleInputPassword1" className="form-label">Mot de passe</label>
+                        <input type="password" onChange={this.handlePasswordChange} className="form-control"/>
                     </div>
-                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <button type="submit"  className="btn btn-primary">S'inscrire</button>
                 </form>
                 </div>
             </React.Fragment>
