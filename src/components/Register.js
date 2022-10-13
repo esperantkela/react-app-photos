@@ -3,7 +3,12 @@ import React from "react";
 class Register extends React.Component{
     constructor(){
         super()
-        this.state= {}
+        this.state= {
+            name : '',
+            email : '',
+            password : '',
+            confirm_password : ''
+        }
     }
 
     render(){
