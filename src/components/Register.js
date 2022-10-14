@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 class Register extends React.Component{
@@ -7,7 +8,7 @@ class Register extends React.Component{
             name : '',
             email : '',
             password : '',
-            confirm_password : ''
+            password_confirmation : ''
         }
     }
 
@@ -37,7 +38,7 @@ class Register extends React.Component{
 
     handleConfirmPasswordChange = (e) =>{
         this.setState({
-            confirm_password: e.target.value
+            password_confirmation: e.target.value
         }, ()=>{
             console.log(this.state)
         })
@@ -45,7 +46,21 @@ class Register extends React.Component{
 
     handleRegister = (e) =>{
         e.preventDefault()
-        console.log('Inscription')
+        
+        let bodyForData = new FormData()
+
+        bodyForData.set('name', this.state.name)
+        bodyForData.set('email', this.state.email)
+        bodyForData.set('password', this.state.password)
+        bodyForData.set('password_confirmation', this.state.password_confirmation)
+
+        axios.post('http://127.0.0.1:8000/api/register', bodyForData)
+            .then(res=>{
+                console.log(res.data)
+            })
+            .catch(error =>{
+                console.log(error.response)
+            })
     }
 
     render(){
