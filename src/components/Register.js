@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { Navigate } from "react-router-dom";
 
 class Register extends React.Component{
     constructor(){
@@ -8,7 +9,8 @@ class Register extends React.Component{
             name : '',
             email : '',
             password : '',
-            password_confirmation : ''
+            password_confirmation : '',
+            redirect : false
         }
     }
 
@@ -57,6 +59,8 @@ class Register extends React.Component{
         axios.post('http://127.0.0.1:8000/api/register', bodyForData)
             .then(res=>{
                 console.log(res.data)
+                localStorage.setItem('token', res.data.api_token)
+                this.setState({redirect:true})
             })
             .catch(error =>{
                 console.log(error.response)
@@ -64,6 +68,9 @@ class Register extends React.Component{
     }
 
     render(){
+        if(this.state.redirect){
+            return (<Navigate to='/'/>)
+        }
         return(
             <React.Fragment>
                 <div className="container w-50">
