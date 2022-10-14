@@ -64,7 +64,9 @@ class Register extends React.Component{
                 this.setState({redirect:true})
             })
             .catch(error =>{
-                console.log(error.response)
+                if(error.response.status === 401){
+                    this.setState({errors : error.response.data.errors})
+                }
             })
     }
 
@@ -79,19 +81,23 @@ class Register extends React.Component{
                 <form method="post" onSubmit={this.handleRegister}>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Nom</label>
-                        <input type="text"  onChange={this.handleNameChange} className="form-control" aria-describedby="emailHelp"/>
+                        <input type="text"  onChange={this.handleNameChange} className={`form-control ${this.state.errors && this.state.errors.name ? 'is-invalid' : ''}`} aria-describedby="emailHelp"/>
+                        { this.state.errors && this.state.errors.name ? <div className="text-danger">{ this.state.errors['name'] }</div> : '' }
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Adresse email</label>
-                        <input type="email" onChange={this.handleEmailChange} className="form-control" aria-describedby="emailHelp"/>
+                        <input type="email" onChange={this.handleEmailChange} className={`form-control ${this.state.errors && this.state.errors.email ? 'is-invalid' : ''}`} aria-describedby="emailHelp"/>
+                        { this.state.errors && this.state.errors.email ? <div className="text-danger">{ this.state.errors['email'] }</div> : '' }
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">Mot de passe</label>
-                        <input type="password" onChange={this.handlePasswordChange} className="form-control"/>
+                        <input type="password" onChange={this.handlePasswordChange} className={`form-control ${this.state.errors && this.state.errors.password ? 'is-invalid' : ''}`}/>
+                        { this.state.errors && this.state.errors.password ? <div className="text-danger">{ this.state.errors['password'] }</div> : '' }
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">Confirmation mot de passe</label>
-                        <input type="password" onChange={this.handleConfirmPasswordChange} className="form-control"/>
+                        <input type="password" onChange={this.handleConfirmPasswordChange} className={`form-control ${this.state.errors && this.state.errors.password_confirmation ? 'is-invalid' : ''}`}/>
+                        { this.state.errors && this.state.errors.password_confirmation ? <div className="text-danger">{ this.state.errors['password_confirmation'] }</div> : '' }
                     </div>
                     <button type="submit"  className="btn btn-primary">S'inscrire</button>
                 </form>
