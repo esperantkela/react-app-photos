@@ -14,6 +14,12 @@ class Login extends React.Component{
         }
     }
 
+    componentDidMount(){
+        if(localStorage.getItem('token')){
+            this.setState({redirect:true})
+        }
+    }
+
     handleEmailChange = (e) =>{
         this.setState({
             email: e.target.value

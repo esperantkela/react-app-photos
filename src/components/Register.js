@@ -16,6 +16,13 @@ class Register extends React.Component{
         }
     }
 
+    
+    componentDidMount(){
+        if(localStorage.getItem('token')){
+            this.setState({redirect:true})
+        }
+    }
+
     handleNameChange = (e) =>{
         this.setState({
             name: e.target.value

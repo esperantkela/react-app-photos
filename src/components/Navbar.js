@@ -9,6 +9,7 @@ class Navbar extends React.Component{
         }
     }
 
+ 
     render(){
         return (
             <React.Fragment>
@@ -20,15 +21,34 @@ class Navbar extends React.Component{
                         </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/">Accueil</Link>
-                            </li>
-                            <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/login">Connexion</Link>
-                            </li>
-                            <li class="nav-item">
-                            <Link class="nav-link active" to="/register">Inscription</Link>
-                            </li> 
+                           {
+                                localStorage.getItem('token')
+                                ?
+                                
+                                <>
+                                    <li class="nav-item">
+                                    <Link class="nav-link active" aria-current="page" to="/">Accueil</Link>
+                                    </li>
+                                    <li class="nav-item">
+                                    <Link class="nav-link active" aria-current="page" to="/login">AJouter une Photo</Link>
+                                    </li>
+                                    <button className="btn btn-danger">Déconnexion</button>
+                                </>
+                                    
+                                :
+                                <>
+                                    <li class="nav-item">
+                                    <Link class="nav-link active" aria-current="page" to="/">Accueil</Link>
+                                    </li>
+                                    <li class="nav-item">
+                                    <Link class="nav-link active" aria-current="page" to="/login">Connexion</Link>
+                                    </li>
+                                    <li class="nav-item">
+                                    <Link class="nav-link active" to="/register">Inscription</Link>
+                                </li> 
+                            </>
+                                
+                           }
                         </ul>
                         </div>
                     </div>
