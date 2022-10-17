@@ -47,6 +47,12 @@ class PostPicture extends React.Component{
         bodyFormData.set('description', this.state.description)
         bodyFormData.set('image', this.state.image)
 
+        let headers =  {
+            headers : {
+                'API-TOKEN' : localStorage.getItem('token')
+            }
+        }
+
         axios.post('http://127.0.0.1:8000/api/pictures', bodyFormData)
             .then(res=>{
                 console.log(res.data)
@@ -80,7 +86,7 @@ class PostPicture extends React.Component{
                         </div>
                         <div className="mb-3">
                             <label for="exampleInputPassword1" className="form-label">Description</label>
-                            <textarea onChange={this.handleDescriptionChange} class={`form-control ${this.state.errors && this.state.errors.descrption ? 'is-invalid' : ''}`} id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea onChange={this.handleDescriptionChange} class={`form-control ${this.state.errors && this.state.errors.description ? 'is-invalid' : ''}`} id="exampleFormControlTextarea1" rows="3"></textarea>
                             { this.state.errors && this.state.errors.description ? <div className="text-danger">{ this.state.errors['description'] } </div> : '' }
                         </div>
 
