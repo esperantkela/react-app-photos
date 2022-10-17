@@ -70,13 +70,13 @@ class Login extends React.Component{
                 <form method="post" onSubmit={this.handleLogin}>
                     <div className="mb-3">
                         <label for="exampleInputEmail1" className="form-label">Adresse email</label>
-                        <input type="email" onChange={this.handleEmailChange} className="form-control" aria-describedby="emailHelp"/>
+                        <input type="email" onChange={this.handleEmailChange} className={`form-control ${this.state.errors && this.state.errors.email ? 'is-invalid' : ''}`} aria-describedby="emailHelp"/>
                         { this.state.errors && this.state.errors.email ? <div className="text-danger">{ this.state.errors['email'] } </div> : '' }
                         
                     </div>
                     <div className="mb-3">
                         <label for="exampleInputPassword1" className="form-label">Mot de passe</label>
-                        <input type="password" onChange={this.handlePasswordChange} className="form-control"/>
+                        <input type="password" onChange={this.handlePasswordChange} className={`form-control ${this.state.errors && this.state.errors.password ? 'is-invalid' : ''}`}/>
                         { this.state.errors && this.state.errors.password ? <div className="text-danger">{ this.state.errors['password'] } </div> : '' }
                     </div>
                     { this.state.errors && this.state.errors == 'bad_credentials' ? <div className="alert alert-warning">Vos identifiants de connexion sont incorrects </div> : '' }

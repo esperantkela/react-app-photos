@@ -35,7 +35,7 @@ class Navbar extends React.Component{
                                     <Link class="nav-link active" aria-current="page" to="/">Accueil</Link>
                                     </li>
                                     <li class="nav-item">
-                                    <Link class="nav-link active" aria-current="page" to="/login">AJouter une Photo</Link>
+                                    <Link class="nav-link active" aria-current="page" to="/picture/new">AJouter une Photo</Link>
                                     </li>
                                     <button className="btn btn-danger" onClick={this.handleLogout}>Déconnexion</button>
                                 </>
