@@ -53,7 +53,7 @@ class PostPicture extends React.Component{
             }
         }
 
-        axios.post('http://127.0.0.1:8000/api/pictures', bodyFormData)
+        axios.post('http://127.0.0.1:8000/api/pictures', bodyFormData, headers)
             .then(res=>{
                 console.log(res.data)
                 localStorage.setItem('token', res.data.api_token)
