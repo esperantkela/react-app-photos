@@ -1,6 +1,7 @@
 import React from "react";
 import axios  from 'axios';
 import { Navigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 class Login extends React.Component{
     constructor(){
@@ -57,6 +58,7 @@ class Login extends React.Component{
         }
         return(
             <React.Fragment>
+                <Navbar/>
                 <div className="container w-50">
                     <h1 className="text-center my-5">Connexion</h1>
                 <form method="post" onSubmit={this.handleLogin}>

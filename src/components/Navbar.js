@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 class Navbar extends React.Component{
     constructor(){
         super()
-        this.state = {}
+        this.state = {
+            token : null
+        }
     }
 
     render(){

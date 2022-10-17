@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { Navigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 class Register extends React.Component{
     constructor(){
@@ -76,6 +77,7 @@ class Register extends React.Component{
         }
         return(
             <React.Fragment>
+                <Navbar/>
                 <div className="container w-50">
                     <h1 className="text-center my-5">S'inscrire</h1>
                 <form method="post" onSubmit={this.handleRegister}>
