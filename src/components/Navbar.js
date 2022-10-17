@@ -9,7 +9,12 @@ class Navbar extends React.Component{
         }
     }
 
- 
+    handleLogout = () =>{
+        localStorage.setItem('token', '')
+        localStorage.clear
+        this.setState({token: null})
+    }
+
     render(){
         return (
             <React.Fragment>
@@ -32,7 +37,7 @@ class Navbar extends React.Component{
                                     <li class="nav-item">
                                     <Link class="nav-link active" aria-current="page" to="/login">AJouter une Photo</Link>
                                     </li>
-                                    <button className="btn btn-danger">Déconnexion</button>
+                                    <button className="btn btn-danger" onClick={this.handleLogout}>Déconnexion</button>
                                 </>
                                     
                                 :
