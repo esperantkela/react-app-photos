@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import  axios  from 'axios';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component{
     constructor(){
@@ -34,7 +35,7 @@ class Home extends React.Component{
                                 <div class="card-body">
                                     <h5 class="card-title">{picture.title}</h5>
                                     <p class="card-text">{picture.description}</p>
-                                    <a href="#" class="btn btn-primary">En savoir plus</a>
+                                    <Link to={`picture/${picture.id}`} class="btn btn-primary">En savoir plus</Link>
                                 </div>
                             </div>
                             )
