@@ -34,7 +34,7 @@ class Home extends React.Component{
                                 <div class="card-body">
                                     <h5 class="card-title">{picture.title}</h5>
                                     <p class="card-text">{picture.description}</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="#" class="btn btn-primary">En savoir plus</a>
                                 </div>
                             </div>
                             )
