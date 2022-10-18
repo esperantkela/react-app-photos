@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import axios  from 'axios';
 import { Navigate } from 'react-router-dom';
+import Swal from "sweetalert2";  
 
 class PostPicture extends React.Component{
     constructor(){
@@ -56,6 +57,18 @@ class PostPicture extends React.Component{
         axios.post('http://127.0.0.1:8000/api/pictures', bodyFormData, headers)
             .then(res=>{
                 console.log(res.data)
+                Swal.fire({  
+                    title: 'Success',  
+                    type: 'success',  
+                    text: 'Photo enregistrée avec succès.', 
+                    icon: 'success',  
+                    showCancelButton: false,  
+                    confirmButtonColor: '#3085d6',  
+                    cancelButtonColor: '#d33',  
+                    confirmButtonText: 'Ok'  
+               
+                  });
+
                 this.setState({redirect:true})
             })
             .catch(error =>{
