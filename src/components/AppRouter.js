@@ -9,11 +9,11 @@ class AppRouter extends React.Component{
     render(){
         return(
             <Routes>
-            <Route path='/' index element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/picture/new' element={<PostPicture />} />
-      </Routes>
+                <Route path='/' index element={<Home />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/picture/new' element={<PostPicture />} />
+            </Routes>
         );
     }
 }
