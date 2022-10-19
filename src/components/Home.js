@@ -7,7 +7,8 @@ class Home extends React.Component{
     constructor(){
         super()
         this.state = {
-            pictures : []
+            pictures : [],
+            search : ''
         }
     }
 
@@ -22,6 +23,17 @@ class Home extends React.Component{
             })
     }
 
+    handleSearchChange = (e) =>{
+        this.setState({search : e.target.value}, ()=>{
+            console.log(this.state)
+        })
+    }
+
+    handleSubmit = (e) =>{
+        e.preventDefault()
+        console.log('search')
+    }
+
     render(){
         return(
             
@@ -29,8 +41,8 @@ class Home extends React.Component{
                 <Navbar/>
                 <div className="container my-5">
                     <div className="d-flex justify-content-center mb-5">
-                        <form className="form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" name="search" placeholder="Search pictures here..."/>
+                        <form className="form-inline my-2 my-lg-0" method="POST" onSubmit={this.handleSubmit}>
+                            <input className="form-control mr-sm-2" onChange={this.handleSearchChange}  name="search" placeholder="Search pictures here..." type="search"/>
                         </form>
                     </div>
                     <div className="row justify-beetwen">
