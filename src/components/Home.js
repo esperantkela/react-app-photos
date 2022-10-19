@@ -13,8 +13,7 @@ class Home extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.props)
-        axios.get('http://127.0.0.1:8000/api/pictures')
+        axios.post('http://127.0.0.1:8000/api/pictures')
             .then(res =>{
                 this.setState({pictures : res.data})
             })
@@ -25,13 +24,29 @@ class Home extends React.Component{
 
     handleSearchChange = (e) =>{
         this.setState({search : e.target.value}, ()=>{
-            console.log(this.state)
+            this.getArticles()
+            if(this.state.search === ''){
+                this.getArticles()
+            }
         })
     }
 
     handleSubmit = (e) =>{
         e.preventDefault()
-        console.log('search')
+        this.getArticles()
+    }
+
+    getArticles(){
+        let bodyFormData = new FormData();
+        bodyFormData.set('search', this.state.search)
+
+        axios.post('http://127.0.0.1:8000/api/pictures', bodyFormData)
+            .then(res =>{
+                this.setState({pictures : res.data})
+            })
+            .catch(error=>{
+                console.log(error)
+            })
     }
 
     render(){
