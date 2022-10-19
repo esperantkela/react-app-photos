@@ -3,7 +3,7 @@ import  axios  from 'axios';
 
 class Picture extends React.Component
 {
-    constructor(props){
+    constructor(){
         super();
 
         this.state = {
@@ -11,6 +11,7 @@ class Picture extends React.Component
         }
     }
   componentDidMount() {
+    console.log(this.props)
      if(localStorage.getItem('token')){
         let id = this.props.match.params.id
         let headers = {
@@ -21,11 +22,14 @@ class Picture extends React.Component
 
         axios.get(`http://127.0.0.1:8000/api/picture/${id}`, headers)
             .then(res=>{
-                console.log(res)
+                this.setState({redirect:true})
+                console.log(res.response)
             })
             .catch(error=>{
                 console.log(error.response)
             })
+     }else{
+        this.setState({redirect:false})
      }
     }
 

@@ -11,7 +11,7 @@ class Navbar extends React.Component{
 
     handleLogout = () =>{
         localStorage.setItem('token', '')
-        localStorage.clear
+        localStorage.clear()
         this.setState({token: null})
     }
 

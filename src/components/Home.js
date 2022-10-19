@@ -12,6 +12,7 @@ class Home extends React.Component{
     }
 
     componentDidMount(){
+        console.log(this.props)
         axios.get('http://127.0.0.1:8000/api/pictures')
             .then(res =>{
                 this.setState({pictures : res.data})
@@ -27,11 +28,16 @@ class Home extends React.Component{
             <>
                 <Navbar/>
                 <div className="container my-5">
+                    <div className="d-flex justify-content-center mb-5">
+                        <form className="form-inline my-2 my-lg-0">
+                            <input className="form-control mr-sm-2" name="search" placeholder="Search pictures here..."/>
+                        </form>
+                    </div>
                     <div className="row justify-beetwen">
                         {
                             this.state.pictures.map((picture) =>
                             <div class="card mx-2 my-3" style={{ width : '350px' }} >
-                                <img class="card-img-top" src={`http://127.0.0.1:8000/storage/pictures/${picture.image}`}/>
+                                <img class="card-img-top" src={`http://127.0.0.1:8000/storage/pictures/${picture.image}`} alt=""/>
                                 <div class="card-body">
                                     <h5 class="card-title">{picture.title}</h5>
                                     <p class="card-text">{picture.description}</p>
