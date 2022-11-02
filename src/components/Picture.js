@@ -46,17 +46,31 @@ const  Picture  = ()=>
        <React.Fragment>
             <Navbar/>
             <div className="container my-5">
-                <div className="row">
-                    <div className="col-8">
+                {
+                    picture && picture.user
+                    ?
+                    <div className="row">
+                    <div className="col-6">
                         {console.log(picture.image)}
                         <img className="img-fluid" src={`http://127.0.0.1:8000/storage/pictures/${picture.image}`} alt="img"/>
                     </div>
                     <div className="col-4">
-                        <div>
-                        <Loader/>
+                        <div >
+                            <h3>{picture.title}</h3>
+                            <p>{picture.description}</p>
+                            <h2>Auteur:  <span className="badge bg-secondary">{picture.user.name}</span></h2>
                         </div>
                     </div>
                 </div>
+
+                    :
+                    <div className="d-flex justify-content-center mt-5">
+                           <Loader/>
+                    </div>
+                 
+
+                }
+                
             </div>
         </React.Fragment>
     );
