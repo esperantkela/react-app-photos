@@ -1,6 +1,7 @@
 import  axios  from "axios";
 import React, {useState, useEffect} from "react";
 import { Navigate, useParams } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const  Picture  = ()=>
 {
@@ -21,9 +22,8 @@ const  Picture  = ()=>
 
             axios.get(`http://127.0.0.1:8000/api/pictures/${id}`, headers)
                 .then(res =>{
-                    setPicture({
-                        picture : res.data
-                    })
+                    console.log(res.data)
+                    setPicture(res.data)
                 })
                 .catch(error =>{
                     console.log(error)
@@ -42,8 +42,22 @@ const  Picture  = ()=>
     }
 
     return(
-       
-        <h1>Photo</h1>
+       <React.Fragment>
+            <Navbar/>
+            <div className="container my-5">
+                <div className="row">
+                    <div className="col-8">
+                        {console.log(picture.image)}
+                        <img className="img-fluid" src={`http://127.0.0.1:8000/storage/pictures/${picture.image}`} alt="img"/>
+                    </div>
+                    <div className="col-4">
+                        <div>
+                            Auteur : {picture.user.name}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </React.Fragment>
     );
 }
 
