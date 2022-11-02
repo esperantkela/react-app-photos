@@ -2,6 +2,7 @@ import  axios  from "axios";
 import React, {useState, useEffect} from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
+import Loader from './Loader';
 
 const  Picture  = ()=>
 {
@@ -52,7 +53,7 @@ const  Picture  = ()=>
                     </div>
                     <div className="col-4">
                         <div>
-                            Auteur : {picture.user.name}
+                        <Loader/>
                         </div>
                     </div>
                 </div>
