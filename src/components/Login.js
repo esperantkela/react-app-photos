@@ -50,7 +50,7 @@ class Login extends React.Component{
                 this.setState({redirect:true})
             })
             .catch(error =>{
-                if(error.response.status === 401){
+                if(error){
                     this.setState({errors : error.response.data.errors}, ()=>{
                         console.log(this.state)
                     })
@@ -79,7 +79,7 @@ class Login extends React.Component{
                         <input type="password" onChange={this.handlePasswordChange} className={`form-control ${this.state.errors && this.state.errors.password ? 'is-invalid' : ''}`}/>
                         { this.state.errors && this.state.errors.password ? <div className="text-danger">{ this.state.errors['password'] } </div> : '' }
                     </div>
-                    { this.state.errors && this.state.errors == 'bad_credentials' ? <div className="alert alert-warning">Vos identifiants de connexion sont incorrects </div> : '' }
+                    { this.state.errors && this.state.errors === 'bad_credentials' ? <div className="alert alert-warning">Vos identifiants de connexion sont incorrects </div> : '' }
                     <button type="submit"  className="btn btn-primary">Se connecter</button>
                 </form>
                 </div>
